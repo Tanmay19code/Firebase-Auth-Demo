@@ -75,13 +75,14 @@ class LoginScreen extends StatelessWidget {
                   else{
                     try{
                       await FirebaseAuth.instance
-                      .signInWithEmailAndPassword(email: email.text, password: password.text);
+                      .signInWithEmailAndPassword(email: email.text, password: password.text)
+                      .then((value) {Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);});
                     }catch(e){
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text(e.toString()),
                     ));
                     }
-                    Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+                    // Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
                   }
                 }
                 )

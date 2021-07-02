@@ -6,7 +6,7 @@ import 'login.dart';
 class HomeScreen extends StatelessWidget {
 
 static const routeName = '/home';
-late Future<FirebaseApp> _firebaseApp =Firebase.initializeApp();
+Future<FirebaseApp> _firebaseApp =Firebase.initializeApp();
 
   @override
   Widget build(BuildContext context) {
@@ -62,13 +62,14 @@ late Future<FirebaseApp> _firebaseApp =Firebase.initializeApp();
                 onPressed: () async {
                   try{
                     await FirebaseAuth.instance
-                    .signOut();
+                    .signOut()
+                    .then((value) {Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);});
                   }catch(e){
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text(e.toString()),
                     ));
                     }
-                  Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
+                  
                 }
                 )
             ),

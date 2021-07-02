@@ -7,7 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 class SignupScreen extends StatelessWidget {
   static const routeName = '/signup';
 
-  late Future<FirebaseApp> _firebaseApp =Firebase.initializeApp();
+  Future<FirebaseApp> _firebaseApp =Firebase.initializeApp();
   TextEditingController email =  TextEditingController();
   TextEditingController password =  TextEditingController();
 
@@ -72,14 +72,15 @@ class SignupScreen extends StatelessWidget {
                   else{
                     try{
                       await FirebaseAuth.instance
-                      .createUserWithEmailAndPassword(email: email.text, password: password.text);
+                      .createUserWithEmailAndPassword(email: email.text, password: password.text)
+                      .then((value) {Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);});
                       
                     }catch(e){
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text(e.toString()),
                     ));
                     }
-                    Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
+                    
                   }               
                 }
                 )
