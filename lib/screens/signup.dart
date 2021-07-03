@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'login.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-// import 'homescreen.dart';
+import 'homescreen.dart';
 
 class SignupScreen extends StatelessWidget {
   static const routeName = '/signup';
@@ -45,6 +45,7 @@ class SignupScreen extends StatelessWidget {
             Container(
               padding: EdgeInsets.fromLTRB(20,20,20,20),
               child: TextField(
+                obscureText: true,
                 controller: password,
                 decoration: InputDecoration(
                   labelText: 'Password',

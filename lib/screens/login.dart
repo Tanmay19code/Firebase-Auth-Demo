@@ -8,7 +8,7 @@ import 'signup.dart';
 class LoginScreen extends StatelessWidget {
 
   static const routeName = '/login';
-  late Future<FirebaseApp> _firebaseApp =Firebase.initializeApp();
+  Future<FirebaseApp> _firebaseApp =Firebase.initializeApp();
   TextEditingController email =  TextEditingController();
   TextEditingController password =  TextEditingController();
 
@@ -48,6 +48,7 @@ class LoginScreen extends StatelessWidget {
             Container(
               padding: EdgeInsets.fromLTRB(20,20,20,20),
               child: TextField(
+                obscureText: true,
                 controller: password,
                 decoration: InputDecoration(
                   labelText: 'Password',
